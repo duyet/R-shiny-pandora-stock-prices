@@ -17,6 +17,11 @@ shinyServer(function(input, output) {
   # Create an environment for storing data
   symbol_env <- new.env()
   
+  pandora_stocks <- read.csv('./data/pandora_stock.csv')
+  pandora_news <- read.csv('./data/pandora_news.csv')
+  
+  pandora_stocks$symbol <- NULL
+  
   # Make a chart for a symbol, with the settings from the inputs
   make_pandora_chart <- function() {
     pandora_stock_data <- require_symbol('P', symbol_env)
